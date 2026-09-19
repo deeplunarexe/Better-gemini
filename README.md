@@ -19,7 +19,7 @@
 3. Нажми **«Загрузить распакованное расширение»**.
 4. Выбери папку:
    ```
-   C:\Users\EgorA\.gemini\antigravity\scratch\better-gemini
+   (путь к папке с рашсирением)
    ```
 5. Открой [gemini.google.com](https://gemini.google.com/app) и обнови страницу (F5).
 
