@@ -1,0 +1,474 @@
+/* Better Gemini: No Context Overflow (BGS) Styles - v1.4.0 */
+
+:root {
+  --bgs-primary: #7c3aed;
+  --bgs-accent: #a855f7;
+  --bgs-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  --bgs-bg-dark: rgba(18, 19, 26, 0.96);
+  --bgs-card-bg: rgba(28, 30, 40, 0.96);
+  --bgs-border: rgba(255, 255, 255, 0.12);
+  --bgs-text: #f3f4f6;
+  --bgs-text-muted: #9ca3af;
+  --bgs-shadow: 0 14px 40px -4px rgba(0, 0, 0, 0.7);
+}
+
+/* ==========================================================================
+   1. BGS Header Button (Draggable, with turn counter pill)
+   ========================================================================== */
+.bgs-header-btn {
+  position: fixed;
+  top: 12px;
+  right: 270px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(26, 28, 38, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: #ffffff !important;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: grab;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 12px rgba(168, 85, 247, 0.2);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+  z-index: 9999;
+  user-select: none;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.bgs-header-btn:active {
+  cursor: grabbing;
+}
+
+.bgs-header-btn:hover {
+  border-color: rgba(168, 85, 247, 0.8);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4);
+  transform: translateY(-1px);
+}
+
+.bgs-logo-glow {
+  font-size: 14px;
+  filter: drop-shadow(0 0 5px #c084fc);
+}
+
+.bgs-logo-title {
+  font-weight: 700;
+  background: linear-gradient(135deg, #a5b4fc, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bgs-pill-divider {
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 2px;
+}
+
+.bgs-pill-count {
+  font-size: 12px;
+  color: #38bdf8;
+}
+
+.bgs-btn-alert {
+  border-color: #f87171 !important;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.5) !important;
+  animation: bgsAlertPulse 2s infinite;
+}
+
+.bgs-btn-alert .bgs-pill-count {
+  color: #f87171 !important;
+}
+
+@keyframes bgsAlertPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* ==========================================================================
+   2. Stealth Message Clean Rendering
+   ========================================================================== */
+.bgs-stealth-message {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ==========================================================================
+   3. Approval Modal Dialog (Centered, Clean)
+   ========================================================================== */
+.bgs-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100000;
+  animation: bgsFadeIn 0.2s ease-out;
+}
+
+.bgs-modal-card {
+  background: var(--bgs-card-bg);
+  border: 1px solid var(--bgs-border);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: var(--bgs-shadow);
+  padding: 22px;
+  color: var(--bgs-text);
+  box-sizing: border-box;
+}
+
+.bgs-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.bgs-modal-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bgs-modal-icon {
+  font-size: 24px;
+}
+
+.bgs-modal-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.bgs-modal-badge {
+  background: rgba(124, 58, 237, 0.25);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  border-radius: 12px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.bgs-modal-desc {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--bgs-text-muted);
+  margin-bottom: 12px;
+}
+
+.bgs-modal-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 12.5px;
+  margin-bottom: 12px;
+}
+
+.bgs-modal-stats strong {
+  color: #38bdf8;
+}
+
+.bgs-modal-note {
+  font-size: 12px;
+  color: #9ca3af;
+  font-style: italic;
+  margin-bottom: 14px;
+}
+
+.bgs-modal-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  cursor: pointer;
+  margin-bottom: 18px;
+}
+
+.bgs-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   4. Side Panel (No Context Overflow Settings)
+   ========================================================================== */
+.bgs-side-panel {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 390px;
+  height: 100vh;
+  background: var(--bgs-bg-dark);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: 1px solid var(--bgs-border);
+  box-shadow: var(--bgs-shadow);
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--bgs-text);
+  box-sizing: border-box;
+}
+
+.bgs-side-panel.bgs-panel-open {
+  right: 0;
+}
+
+.bgs-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--bgs-border);
+}
+
+.bgs-panel-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bgs-panel-title-wrap h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.bgs-panel-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--bgs-text-muted);
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+.bgs-panel-close-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.bgs-panel-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.bgs-setting-section {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--bgs-border);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.bgs-highlight-card {
+  background: linear-gradient(145deg, rgba(124, 58, 237, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.bgs-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.bgs-status-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.badge-on {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.badge-off {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.bgs-counter-dashboard {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.bgs-dash-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: var(--bgs-text-muted);
+  margin-bottom: 8px;
+}
+
+.bgs-dash-labels strong {
+  color: #38bdf8;
+  font-size: 14px;
+}
+
+.bgs-progress-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bgs-progress-fill {
+  height: 100%;
+  background: var(--bgs-gradient);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.bgs-actions-row {
+  margin-bottom: 12px;
+}
+
+.bgs-divider {
+  height: 1px;
+  background: var(--bgs-border);
+  margin: 12px 0;
+}
+
+.bgs-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #c084fc;
+}
+
+.bgs-switch-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.bgs-field-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--bgs-text-muted);
+  margin-bottom: 12px;
+}
+
+.bgs-field-row select {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--bgs-border);
+  border-radius: 8px;
+  color: var(--bgs-text);
+  padding: 8px 10px;
+  font-size: 13px;
+  outline: none;
+}
+
+.bgs-panel-footer {
+  padding: 14px 20px;
+  border-top: 1px solid var(--bgs-border);
+  font-size: 11px;
+  color: var(--bgs-text-muted);
+  text-align: center;
+}
+
+/* ==========================================================================
+   5. Buttons
+   ========================================================================== */
+.bgs-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.bgs-btn-primary {
+  background: var(--bgs-gradient);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(124, 58, 237, 0.4);
+}
+
+.bgs-btn-primary:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.bgs-btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--bgs-text);
+}
+
+.bgs-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.bgs-btn-sm {
+  padding: 4px 10px;
+  font-size: 11px;
+}
+
+.bgs-btn-block {
+  width: 100%;
+}
+
+/* ==========================================================================
+   6. Toast Notification
+   ========================================================================== */
+.bgs-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: rgba(20, 22, 28, 0.95);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 13px;
+  box-shadow: var(--bgs-shadow);
+  z-index: 999999;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.bgs-toast.bgs-toast-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes bgsFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}

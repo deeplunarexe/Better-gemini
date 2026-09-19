@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Better Gemini: No Context Overflow",
+  "version": "1.3.0",
+  "description": "Интеллектуальная защита от потери контекста в веб-версии Gemini: автоматическая реинъекция сжатой памяти диалога со 100% невидимой маскировкой.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "*://gemini.google.com/*"
+  ],
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://gemini.google.com/*"
+      ],
+      "js": [
+        "src/content/bgs-store.js",
+        "src/content/parser.js",
+        "src/content/hidden-injector.js",
+        "src/content/context-keeper.js",
+        "src/content/bgs-ui.js",
+        "src/content/content.js"
+      ],
+      "css": [
+        "src/content/bgs-styles.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

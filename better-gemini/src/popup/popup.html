@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Better Gemini: No Context Overflow</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <div class="header">
+      <div class="logo">
+        <span class="icon">⚡</span>
+        <h2>Better Gemini</h2>
+      </div>
+      <span class="badge">v1.4.0</span>
+    </div>
+
+    <div class="status-card">
+      <div class="status-indicator">
+        <span class="dot pulse"></span>
+        <span class="status-text">Защита памяти активна</span>
+      </div>
+      <div class="turn-box">
+        <span class="turn-label">Сообщений в диалоге:</span>
+        <span class="turn-val" id="pop-turns">0 / 15</span>
+      </div>
+    </div>
+
+    <div class="quick-toggles">
+      <label class="toggle-row">
+        <span>No Context Overflow</span>
+        <input type="checkbox" id="pop-no-overflow" checked>
+      </label>
+      <label class="toggle-row">
+        <span>Запрашивать подтверждение</span>
+        <input type="checkbox" id="pop-require-approval" checked>
+      </label>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" id="pop-open-gemini">
+        Открыть Gemini ↗
+      </button>
+      <button class="btn btn-secondary" id="pop-reset-turns">
+        Сбросить счетчик
+      </button>
+    </div>
+
+    <div class="footer">
+      <span>gemini.google.com • Stealth Memory</span>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
